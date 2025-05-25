@@ -1,14 +1,14 @@
 import './App.css'
 import React from 'react'
-import Data from './Data'
 import { useState , useEffect } from 'react'
 
 function List(props) {
-    const [cartOnArr,setCartOnArr] = useState(Array(Data.length).fill(false))
-    const [cartCount,setCartCount] = useState(Array(Data.length).fill(1))
-    const [data,setData] = useState(Data)
-    const [inputData,setInputData] = useState(data)
+    
+    const [data,setData] = useState(props.data)
+    const [inputData,setInputData] = useState(props.data)
     const input = props.sendData
+    const count = props.cartCount
+    const cartOn = props.cartOnArr
 
     useEffect(()=>{
             const newData = inputData.filter((e,index)=>{
@@ -26,10 +26,11 @@ function List(props) {
                         <div className="box">
                             <img src={e.image_url}></img>
                             <h3>{e.foodName}</h3>
-                            {!cartOnArr[index] && <button onClick={()=>cartToggle(index)}>หยิบใส่ตะกร้า</button>}
-                            {cartOnArr[index] && <div className="cartPress">
+                            <h4 className='price'>ราคา {e.price} บาท</h4>
+                            {!cartOn[index] && <button onClick={()=>cartToggle(index)}>หยิบใส่ตะกร้า</button>}
+                            {cartOn[index] && <div className="cartPress">
                                 <i className="fa-solid fa-minus fa-lg" onClick={()=>decrease(index)}></i>
-                                <h4>{cartCount[index]}</h4>
+                                <h4 className='count'>{count[index]}</h4>
                                 <i className="fa-solid fa-plus fa-lg" onClick={()=>increase(index)}></i>
                             </div>}
                         </div>
@@ -40,26 +41,13 @@ function List(props) {
     </div>
   )
   function cartToggle(i){
-    const newArr = [...cartOnArr]
-    newArr[i] = !newArr[i]
-    setCartOnArr(newArr)
+    props.getToggle(i)
   }
   function increase(i){
-    const newArr = [...cartCount]
-    newArr[i] = newArr[i]+1
-    setCartCount(newArr)
+    props.getIncrease(i)
   }
   function decrease(i){
-    if(cartCount[i] > 1){
-        const newArr = [...cartCount]
-        newArr[i] = newArr[i]-1
-        setCartCount(newArr)
-    }
-    else{
-        const newArr = [...cartOnArr]
-        newArr[i] = !newArr[i]
-        setCartOnArr(newArr)
-    }
+    props.getDecrease(i)
   }
 }
 

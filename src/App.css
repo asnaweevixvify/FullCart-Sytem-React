@@ -46,7 +46,7 @@ i{
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 20px;
+  gap: 10px;
 }
 .box img{
     width: 300px;
@@ -54,6 +54,7 @@ i{
     object-fit: cover;
     border: 0px solid transparent;
     border-radius: 15px;
+    margin-bottom: 10px;
 }
 .box h3{
   font-family: 'Kanit';
@@ -62,9 +63,21 @@ i{
   font-size: 20px;
   color: black;
 }
+.box h4{
+  font-family: 'Kanit';
+  text-align: center;
+  font-weight: 400;
+  font-size: 17px;
+}
 .box button{
   font-family: 'Kanit';
   background-color: #3A3A3A;
+}
+.count{
+  color: white;
+}
+.price{
+  color: black;
 }
 .cartPress{
   display: flex;
@@ -76,6 +89,52 @@ i{
   border: 0px solid transparent;
   border-radius: 15px;
 }
+.cartPressReport{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  background-color: #3A3A3A;
+  padding: 10px;
+  border: 0px solid transparent;
+  border-radius: 15px;
+}
+
 a{
+  color: white;
+}
+.cart-container{
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.cart-list{
+  display: flex;
+  background-color: white;
+  width: 800px;
+  height: 120px;
+  margin-left: auto;
+  margin-right: auto;
+  border: 0px solid transparent;
+  border-radius: 15px;
+  list-style: none;
+  justify-content: space-around;
+  align-items: center;
+}
+.cart-list img{
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border: 0px solid transparent;
+  border-radius: 15px;
+  display: flex;
+}
+.cart-list li h4{
+  color: black;
+  font-family: 'Kanit';
+  font-size: 25px;
+  font-weight: 400;
+}
+.countReport{
   color: white;
 }
