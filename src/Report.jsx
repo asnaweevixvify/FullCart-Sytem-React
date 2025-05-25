@@ -22,7 +22,7 @@ function Report(props) {
             if(cartOnArr[index]){
                 return(
                     <ul className='cart-list' key={index}>
-                        <img src={e.image_url}></img>
+                        <li><img src={e.image_url}></img></li>
                         <li><h4>{e.foodName}</h4></li>
                         <li><h4>{e.price} บาท</h4></li>
                         <li><h4>x{count[index]}</h4></li>

@@ -14,16 +14,6 @@ function App() {
   const [cartCount,setCartCount] = useState(Array(Data.length).fill(0))
   const [sendData,setSendData] = useState('')
 
-  useEffect(()=>{
-    cartCount.map((e,index)=>{
-      if(e === 0){
-        const newArr = [...cartOnArr]
-        newArr[index] = false
-        setCartOnArr(newArr)
-      }
-    })
-  },[cartCount])
-
   function getInput(e){
     setSendData(e)
   }
@@ -35,17 +25,27 @@ function App() {
   }
 
   function getDecrease(i){
-      const newArr = [...cartCount]
-      newArr[i] = newArr[i]-1
-      setCartCount(newArr)
+      if(cartCount[i]>1){
+        const newArr = [...cartCount]
+        newArr[i] = newArr[i]-1
+        setCartCount(newArr)
+      }
+      else{
+        const newArr = [...cartCount]
+        newArr[i] = newArr[i]-1
+        setCartCount(newArr)
+        const arr = [...cartOnArr]
+        arr[i] = !arr[i]
+        setCartOnArr(arr)
+      }
   }
 
   function getToggle(i){
     const newArr = [...cartOnArr]
     newArr[i] = !newArr[i]
+    setCartOnArr(newArr)
     const arr = [...cartCount]
     arr[i] = arr[i]+1
-    setCartOnArr(newArr)
     setCartCount(arr)
   }
 
