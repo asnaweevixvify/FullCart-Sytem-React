@@ -138,3 +138,20 @@ a{
 .countReport{
   color: white;
 }
+.reportPrice{
+  width: 800px;
+  height: 80px;
+  background-color: cadetblue;
+  border: 0px solid transparent;
+  border-radius: 15px;
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
+  justify-content: center;
+  align-items: center;
+  gap: 60px;
+}
+.reportPrice h2{
+  font-family: 'Kanit';
+  font-weight: 400;
+}

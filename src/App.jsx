@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState , useEffect} from 'react'
 import './App.css'
 import Nav from './Nav'
 import List from './List'
@@ -11,8 +11,19 @@ function App() {
 
   const [data,setData] = useState(Data)
   const [cartOnArr,setCartOnArr] = useState(Array(Data.length).fill(false))
-  const [cartCount,setCartCount] = useState(Array(Data.length).fill(1))
+  const [cartCount,setCartCount] = useState(Array(Data.length).fill(0))
   const [sendData,setSendData] = useState('')
+
+  useEffect(()=>{
+    cartCount.map((e,index)=>{
+      if(e === 0){
+        const newArr = [...cartOnArr]
+        newArr[index] = false
+        setCartOnArr(newArr)
+      }
+    })
+  },[cartCount])
+
   function getInput(e){
     setSendData(e)
   }
@@ -24,22 +35,18 @@ function App() {
   }
 
   function getDecrease(i){
-    if(cartCount[i] > 1){
       const newArr = [...cartCount]
       newArr[i] = newArr[i]-1
       setCartCount(newArr)
-    }
-    else{
-      const newArr = [...cartOnArr]
-      newArr[i] =  !newArr[i]
-      setCartOnArr(newArr)
-    }
   }
 
   function getToggle(i){
     const newArr = [...cartOnArr]
     newArr[i] = !newArr[i]
+    const arr = [...cartCount]
+    arr[i] = arr[i]+1
     setCartOnArr(newArr)
+    setCartCount(arr)
   }
 
   return (

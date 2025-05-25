@@ -6,12 +6,22 @@ function Report(props) {
     const data = props.data
     const count = props.cartCount
     const cartOnArr = props.cartOnArr
+    const priceSplit = count.map((e,index)=>{
+      return e*data[index].price
+    })
+    const priceAll = priceSplit.reduce((sum,num)=>{
+      return sum + num
+    },0)
+    const countAll = count.reduce((sum,num)=>{
+      return sum + num
+    })
+    
   return (
     <div className="cart-container">
         {data.map((e,index)=>{
             if(cartOnArr[index]){
                 return(
-                    <ul className='cart-list'>
+                    <ul className='cart-list' key={index}>
                         <img src={e.image_url}></img>
                         <li><h4>{e.foodName}</h4></li>
                         <li><h4>{e.price} บาท</h4></li>
@@ -28,6 +38,10 @@ function Report(props) {
 
             }
         })}
+        <div className="reportPrice">
+          <h2>สินค้าทั้งหมด {countAll} รายการ</h2>
+          <h2>ราคา {priceAll} บาท</h2>
+        </div>
     </div>
   )
   function increase(i){
