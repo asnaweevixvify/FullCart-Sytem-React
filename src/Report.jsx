@@ -1,11 +1,16 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import './App.css'
+import { useState } from 'react'
+import Swal from 'sweetalert2'
+import { useNavigate } from 'react-router-dom'
 
 
 function Report(props) {
     const data = props.data
     const count = props.cartCount
     const cartOnArr = props.cartOnArr
+    const [getStatus,setGetStatus] = useState(true)
+    const navigate = useNavigate()
     const priceSplit = count.map((e,index)=>{
       return e*data[index].price
     })
@@ -15,6 +20,15 @@ function Report(props) {
     const countAll = count.reduce((sum,num)=>{
       return sum + num
     })
+
+    useEffect(()=>{
+      if(countAll === 0){
+        setGetStatus(true)
+      }
+      else{
+        setGetStatus(false)
+      }
+    },[countAll])
     
   return (
     <div className="cart-container">
@@ -40,8 +54,10 @@ function Report(props) {
         })}
         <div className="reportPrice">
           <h2>สินค้าทั้งหมด {countAll} รายการ</h2>
+          <h2>|</h2>
           <h2>ราคา {priceAll} บาท</h2>
         </div>
+        <button className='getBtn' disabled={getStatus} onClick={sendFood}>สั่งซื้ออาหาร</button>
     </div>
   )
   function increase(i){
@@ -49,6 +65,17 @@ function Report(props) {
   }
   function decrease(i){
     props.getDecrease(i)
+  }
+  function sendFood(){
+    Swal.fire({
+      title: `<h3>สั่งซื้อสำเร็จ</h3>`,
+      icon: "success",
+      draggable: true
+    }).then(()=>{
+      navigate('/')
+    }).then(()=>{
+      window.location.reload()
+    })
   }
 }
 
