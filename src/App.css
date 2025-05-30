@@ -7,26 +7,33 @@ body{
   padding: 0;
   margin: 0;
   display: block;
+  overflow-x: hidden;
+  background-color:white;
 }
 .nav-container{
   display: flex;
-  gap: 20px;
-  width: 100%;
-  height: 170px;
-  justify-content:space-between;
+  gap: 40px;
+  width:100vw;
+  height: 120px;
+  justify-content:center;
   align-items: center;
-  width: 1150px;
   margin-left: auto;
   margin-right: auto;
 }
 .nav-container input{
-  width: 400px;
-  height: 40px;
+  width: 500px;
+  height: 45px;
   font-family: 'Kanit';
   font-size: 20px;
+  background-color: white;
+  border: 2px solid #3A3A3A;
+  border-radius: 10px;
+  display: flex;
+  padding-left: 10px;
 }
 i{
   cursor: pointer;
+  color: #3A3A3A;
 }
 .list-container{
   display: flex;
@@ -40,7 +47,7 @@ i{
   margin-top: 40px;
 }
 .box{
-  background-color: #dadada;
+  background-color:whitesmoke;
   width: 350px;
   height: 400px;
   border: 0px solid transparent;
@@ -50,6 +57,7 @@ i{
   justify-content: center;
   align-items: center;
   gap: 10px;
+  border: 3px solid #3A3A3A;
 }
 .box img{
     width: 300px;
@@ -71,17 +79,17 @@ i{
   text-align: center;
   font-weight: 400;
   font-size: 17px;
+  color: black;
 }
 .box button{
   font-family: 'Kanit';
-  background-color: #3A3A3A;
+  background-color:#3A3A3A;
+  color: white;
 }
 .count{
   color: white;
 }
-.price{
-  color: black;
-}
+
 .cartPress{
   display: flex;
   justify-content: center;
@@ -126,6 +134,10 @@ a{
   align-items: center;
   padding-left: 40px;
   padding-right: 40px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  border: 3px solid #3A3A3A;
+
 }
 .cart-list li{
   flex: 1;
@@ -190,4 +202,13 @@ h3{
   gap: 20px;
   justify-content: center;
   align-items: center;
+}
+.cartPress h4{
+  color: white;
+}
+.cartPress i{
+  color: white;
+}
+.cartPressReport i{
+  color: white;
 }
