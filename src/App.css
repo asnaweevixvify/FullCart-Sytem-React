@@ -30,6 +30,7 @@ body{
   border-radius: 10px;
   display: flex;
   padding-left: 10px;
+  color: black;
 }
 i{
   cursor: pointer;
